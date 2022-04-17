@@ -9,6 +9,7 @@ const forgotPassword = require('./forgotPassword_R');
 const resetPassword = require('./resetPassword_R');
 const auth = require('../middleware/auth');
 const logout = require('./logout_R');
+const article = require('./article_R');
 
 const start = (app)=>
 {
@@ -23,6 +24,7 @@ const start = (app)=>
     app.use(auth);
     app.use('/private', require("./testPrivate_R"));
     app.use('/logout', logout);
+    app.use('/article', article);
 
     // errorHandler must be the last one
     app.use(errorHandler);

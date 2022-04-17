@@ -1,4 +1,6 @@
 const validator = require("email-validator");
+
+
 function validateUsername(username = '') 
 {
     //if (typeof username !== 'string') return false;
@@ -23,4 +25,35 @@ function validateAll(username, email, password)
     return isUsername && isEmail && isPassword;
 }
 
-module.exports = { validateAll };
+function validateTitle(title)
+{
+    if(title.length < 100)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function validateBody(body)
+{
+    if(body.length < 1000)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function validateArticle(title, body)
+{
+    const isTitle = validateTitle(title);
+    const isBody = validateBody(body);
+    return isTitle && isBody;
+}
+
+module.exports = { validateAll, validateArticle };
